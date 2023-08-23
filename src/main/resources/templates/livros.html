@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Livros</title>
+</head>
+<body>
+    <h1>Livros</h1>
+    
+    <h2>Lista de Livros</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Editora</th>
+            <th>ISBN</th>
+        </tr>
+        <tr th:each="livro : ${livros}">
+            <td th:text="${livro.id}"></td>
+            <td th:text="${livro.nome}"></td>
+            <td th:text="${livro.autor}"></td>
+            <td th:text="${livro.editora}"></td>
+            <td th:text="${livro.isbn}"></td>
+        </tr>
+    </table>
+    
+    <h2>Create Livro</h2>
+    <form th:action="@{/uc9sa4/livros/create}" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br>
+        <label for="autor">Autor:</label>
+        <input type="text" id="autor" name="autor"><br>
+        <label for="editora">Editora:</label>
+        <input type="text" id="editora" name="editora"><br>
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn"><br>
+        <input type="submit" value="Create">
+    </form>
+</body>
+</html>
