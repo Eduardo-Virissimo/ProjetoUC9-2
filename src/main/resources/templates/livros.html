@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<link rel="stylesheet" th:href="@{/css/styles.css}" />
+  	<link rel="stylesheet" th:href="@{/css/table.css}" />
   	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
@@ -18,11 +19,11 @@
       <div>
 		 	<h2>Adicionar Livro</h2>
 		    <form class="d-block w-100" th:action="@{/livros/create}" method="post">
-		        <input class="input-box" placeholder="nome" type="text" id="nome" name="nome"><br>
-		        <input class="input-box" placeholder="autor" type="text" id="autor" name="autor"><br>
-		        <input class="input-box" placeholder="editora" type="text" id="editora" name="editora"><br>
-		        <input class="input-box" placeholder="isbn" type="text" id="isbn" name="isbn"><br>
-		        <input class="btn" type="submit" value="Adicionar">
+		        <input required class="input-box" placeholder="nome" type="text" id="nome" name="nome"><br>
+		        <input required class="input-box" placeholder="autor" type="text" id="autor" name="autor"><br>
+		        <input required class="input-box" placeholder="editora" type="text" id="editora" name="editora"><br>
+		        <input required class="input-box" placeholder="isbn" type="number" id="isbn" name="isbn"><br>
+		        <input required class="btn" type="submit" value="Adicionar">
 		    </form>
 	    </div>
     </div>
@@ -42,26 +43,31 @@
 <!--    		</form>-->
 <!--			</div>-->
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item table-div">
 		    <h2>Lista de Livros</h2>
-		    <table>
+		    <table class="custom-table">
+				<thead class="custom-thead">
 		        <tr>
 		            <th>ID</th>
 		            <th>Título</th>
 		            <th>Autor</th>
 		            <th>Editora</th>
 		            <th>ISBN</th>
+		            <th>Editar</th>
 		        </tr>
+		        </thead>
+		        <tbody class="custom-tbody">
 		        <tr th:each="livro : ${livros}">
-		            <td th:text="${livro.id}"></td>
-		            <td th:text="${livro.nome}"></td>
-		            <td th:text="${livro.autor}"></td>
-		            <td th:text="${livro.editora}"></td>
-		            <td th:text="${livro.isbn}"></td>
+		            <td data-label="id" th:text="${livro.id}"></td>
+		            <td data-label="nome" th:text="${livro.nome}"></td>
+		            <td data-label="autor" th:text="${livro.autor}"></td>
+		            <td data-label="editora" th:text="${livro.editora}"></td>
+		            <td data-label="isbn" th:text="${livro.isbn}"></td>
 		            <td>
 		                <button class="edit-button" th:data-id="${livro.id}">Edit</button>
 		            </td>
 		        </tr>
+		        </tbody>
 		    </table> 
     	</div>
     </div>
