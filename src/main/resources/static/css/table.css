@@ -28,7 +28,7 @@
      background-color: rgba(0, 18, 25, 0.4);
 }
 
-.edit-button {
+.btnf {
 	padding: 12px 12px;
 	/* Aumenta o tamanho dos botões */
 	font-size: 16px;
@@ -42,7 +42,7 @@
 	transition: transform 0.3s ease;
 }
 
-.edit-button:hover {
+.btnf:hover {
 	background-color: #6c63ff;
 	transform: scale(1.1);
 }

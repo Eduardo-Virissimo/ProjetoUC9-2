@@ -20,8 +20,8 @@ body {
 .wrapper {
 	margin-top: 20px;
 	font-size: 14.5px;
-	width: 560px;
-	max-width: 560px;
+	width: 660px;
+	max-width: 660px;
 	background-color: transparent;
 	border: 2px solid rgba(255, 255, 255, .2);
 	backdrop-filter: blur(20px);

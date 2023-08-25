@@ -54,6 +54,7 @@
 		            <th>Editora</th>
 		            <th>ISBN</th>
 		            <th>Editar</th>
+		            <th>Deletar</th>
 		        </tr>
 		        </thead>
 		        <tbody class="custom-tbody">
@@ -64,7 +65,10 @@
 		            <td data-label="editora" th:text="${livro.editora}"></td>
 		            <td data-label="isbn" th:text="${livro.isbn}"></td>
 		            <td>
-		                <button class="edit-button" th:data-id="${livro.id}">Edit</button>
+		                <button class="edit-button btnf" th:data-id="${livro.id}">Edit</button>
+		            </td>
+		            <td>
+		                <button class="botãodedelete btnf" th:data-id="${livro.id}">Deletar</button>
 		            </td>
 		        </tr>
 		        </tbody>
