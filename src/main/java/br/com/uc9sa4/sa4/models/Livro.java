@@ -10,13 +10,13 @@ import jakarta.persistence.Table;
 public class Livro {
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	private String nome;
 	private String autor;
-	private double isbn;
+	private Long isbn;
 	private String editora;
 	
-	public Livro(int id, String nome, String autor, int isbn, String editora) {
+	public Livro(Long id, String nome, String autor, Long isbn, String editora) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -28,10 +28,10 @@ public class Livro {
 		super();
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -46,10 +46,10 @@ public class Livro {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-	public double getIsbn() {
+	public Long getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(double isbn2) {
+	public void setIsbn(Long isbn2) {
 		this.isbn = isbn2;
 	}
 	public String getEditora() {

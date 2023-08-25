@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Livros</title>
 </head>
@@ -21,11 +22,14 @@
             <td th:text="${livro.autor}"></td>
             <td th:text="${livro.editora}"></td>
             <td th:text="${livro.isbn}"></td>
+            <td>
+                <button class="edit-button" th:data-id="${livro.id}">Edit</button>
+            </td>
         </tr>
     </table>
     
     <h2>Create Livro</h2>
-    <form th:action="@{/uc9sa4/livros/create}" method="post">
+    <form th:action="@{/livros/create}" method="post">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome"><br>
         <label for="autor">Autor:</label>
@@ -36,5 +40,83 @@
         <input type="text" id="isbn" name="isbn"><br>
         <input type="submit" value="Create">
     </form>
+    
+
+<!--     <div id="edit-form" style="display: none;">-->
+<!--        <form th:action="@{/livros/edit/{id}(id=${livro.id})}" method="post">-->
+<!--            <input type="hidden" name="id" th:value="${livro.id}" />-->
+<!--            <label for="nome">Nome:</label>-->
+<!--            <input type="text" id="nome" name="nome" th:value="${livro.nome}" /><br>-->
+<!--            <label for="autor">Autor:</label>-->
+<!--            <input type="text" id="autor" name="autor" th:value="${livro.autor}" /><br>-->
+<!--            <label for="editora">Editora:</label>-->
+<!--            <input type="text" id="editora" name="editora" th:value="${livro.editora}" /><br>-->
+<!--            <label for="isbn">ISBN:</label>-->
+<!--            <input type="text" id="isbn" name="isbn" th:value="${livro.isbn}" /><br>-->
+<!--            <button type="submit">Salvar</button>-->
+<!--            <button class="cancel-button" type="button">Cancelar</button>-->
+<!--        </form>-->
+<!--    </div>-->
+    
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var form = $('#edit-form');
+            var originalRowHtml; // To store the original row HTML when editing
+
+            // Click event listener for Edit buttons
+           $('.edit-button').click(function() {
+			   
+	            console.log('Edit button clicked'); // Add this line
+			   
+			    var livroId = $(this).data('id');
+			    
+	            console.log('livroId:', livroId); // Add this line
+			    
+			    var row = $(this).closest('tr');
+			    
+			    // Store the original row HTML
+			    originalRowHtml = row.html();
+			
+			    // Replace the row with the edit form
+			    row.html(form.html());
+			    form.show();
+			
+			    console.log('Searching for livro with id:', livroId); // Add this line
+
+			    // Find the livro object with the matching id
+			    var livro = $.grep(livros, function(e){ return e.id === livroId; })[0];
+			    
+		        console.log('Found livro:', livro); // Add this line
+
+			    
+			    // Populate the edit form with livro data
+			    form.find('[name="id"]').val(livro.id);
+			    form.find('[name="nome"]').val(livro.nome);
+			    form.find('[name="autor"]').val(livro.autor);
+			    form.find('[name="editora"]').val(livro.editora);
+			    form.find('[name="isbn"]').val(livro.isbn);
+			});
+
+            // Click event listener for cancel button
+            $('.cancel-button').click(function() {
+                // Restore the original row HTML
+                var row = $(this).closest('tr');
+                row.html(originalRowHtml);
+            });
+
+            // Click event listener for document
+            $(document).click(function(event) {
+                // Check if the click was outside the edit form
+                if (!form.is(event.target) && form.has(event.target).length === 0) {
+                    // Restore the original row HTML
+                    var row = form.closest('tr');
+                    row.html(originalRowHtml);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

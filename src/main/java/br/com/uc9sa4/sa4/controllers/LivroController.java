@@ -36,7 +36,7 @@ public class LivroController {
             @RequestParam String nome,
             @RequestParam String autor,
             @RequestParam String editora,
-            @RequestParam double isbn) {
+            @RequestParam long isbn) {
         Livro livro = new Livro();
         livro.setNome(nome);
         livro.setAutor(autor);
@@ -46,12 +46,15 @@ public class LivroController {
         return "redirect:/livros";
     }
     
+    
     @GetMapping("/livros/edit/{id}")
     public String editLivroForm(@PathVariable Long id, Model model) {
+        System.out.println("Fetching livro for editing with id: " + id);
         Livro livro = livroRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid livro Id: " + id));
-        model.addAttribute("livro", livro);
-        return "edit-livro";
+            .orElseThrow(() -> new IllegalArgumentException("Invalid livro Id: " + id));   
+        model.addAttribute("livro", livro);        
+        System.out.println("Livro fetched: " + livro);
+        return "edit-form"; // Use the correct name of your edit form template
     }
 
     @PostMapping("/livros/edit/{id}")
@@ -60,7 +63,7 @@ public class LivroController {
             @RequestParam String nome,
             @RequestParam String autor,
             @RequestParam String editora,
-            @RequestParam double isbn) {
+            @RequestParam long isbn) {
         Livro livro = livroRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("Invalid livro Id: " + id));
         livro.setNome(nome);
