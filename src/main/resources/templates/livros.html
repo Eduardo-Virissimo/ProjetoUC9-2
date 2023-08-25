@@ -7,137 +7,77 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<link rel="stylesheet" th:href="@{/css/styles.css}" />
   	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-	<div class="wrapper">
-    <h1 class="destaque">Livros 📚</h1>
-
-<div>
-    <h2>Adicionar Livro</h2>
-    <form th:action="@{/uc9sa4/livros/create}" method="post">
-        <input class="input-box" placeholder="nome" type="text" id="nome" name="nome"><br>
-        <input class="input-box" placeholder="autor" type="text" id="autor" name="autor"><br>
-        <input class="input-box" placeholder="editora" type="text" id="editora" name="editora"><br>
-        <input class="input-box" placeholder="isbn" type="text" id="isbn" name="isbn"><br>
-        <input class="btn" type="submit" value="Adicionar">
-    </form>
+<div class="wrapper">
+	<h1 class="destaque">Livros 📚</h1>
+	<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div>
+		 	<h2>Adicionar Livro</h2>
+		    <form class="d-block w-100" th:action="@{/livros/create}" method="post">
+		        <input class="input-box" placeholder="nome" type="text" id="nome" name="nome"><br>
+		        <input class="input-box" placeholder="autor" type="text" id="autor" name="autor"><br>
+		        <input class="input-box" placeholder="editora" type="text" id="editora" name="editora"><br>
+		        <input class="input-box" placeholder="isbn" type="text" id="isbn" name="isbn"><br>
+		        <input class="btn" type="submit" value="Adicionar">
+		    </form>
+	    </div>
     </div>
-    <br>
-    <div>
-		
-	
-    <h2>Lista de Livros</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Autor</th>
-            <th>Editora</th>
-            <th>ISBN</th>
-        </tr>
-        <tr th:each="livro : ${livros}">
-            <td th:text="${livro.id}"></td>
-            <td th:text="${livro.nome}"></td>
-            <td th:text="${livro.autor}"></td>
-            <td th:text="${livro.editora}"></td>
-            <td th:text="${livro.isbn}"></td>
-            <td>
-                <button class="edit-button" th:data-id="${livro.id}">Edit</button>
-            </td>
-        </tr>
-    </table>
-    
-    <h2>Create Livro</h2>
-    <form th:action="@{/livros/create}" method="post">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome"><br>
-        <label for="autor">Autor:</label>
-        <input type="text" id="autor" name="autor"><br>
-        <label for="editora">Editora:</label>
-        <input type="text" id="editora" name="editora"><br>
-        <label for="isbn">ISBN:</label>
-        <input type="text" id="isbn" name="isbn"><br>
-        <input type="submit" value="Create">
-    </form>
-    
+    <div class="carousel-item">
+<!--    		<div id="edit-form">-->
+<!--    		<form th:action="@{/livros/edit/{id}(id=${livro.id})}" method="post">-->
+<!--		        <input type="hidden" th:field="*{livro.id}" />-->
+<!--		        <label for="nome">Nome:</label>-->
+<!--		        <input type="text" th:field="*{nome}" /><br>-->
+<!--		        <label for="autor">Autor:</label>-->
+<!--		        <input type="text" th:field="*{autor}" /><br>-->
+<!--		        <label for="editora">Editora:</label>-->
+<!--		        <input type="text" th:field="*{editora}" /><br>-->
+<!--		        <label for="isbn">ISBN:</label>-->
+<!--		        <input type="text" th:field="*{isbn}" /><br>-->
+<!--		        <button type="submit">Salvar</button>-->
+<!--    		</form>-->
+<!--			</div>-->
+    </div>
+    <div class="carousel-item">
+		    <h2>Lista de Livros</h2>
+		    <table>
+		        <tr>
+		            <th>ID</th>
+		            <th>Título</th>
+		            <th>Autor</th>
+		            <th>Editora</th>
+		            <th>ISBN</th>
+		        </tr>
+		        <tr th:each="livro : ${livros}">
+		            <td th:text="${livro.id}"></td>
+		            <td th:text="${livro.nome}"></td>
+		            <td th:text="${livro.autor}"></td>
+		            <td th:text="${livro.editora}"></td>
+		            <td th:text="${livro.isbn}"></td>
+		            <td>
+		                <button class="edit-button" th:data-id="${livro.id}">Edit</button>
+		            </td>
+		        </tr>
+		    </table> 
+    	</div>
+    </div>
+  </div>
+  	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Previous</span>
+  	</button>
+  	<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Next</span>
+  	</button>
+</div>
 
-<!--     <div id="edit-form" style="display: none;">-->
-<!--        <form th:action="@{/livros/edit/{id}(id=${livro.id})}" method="post">-->
-<!--            <input type="hidden" name="id" th:value="${livro.id}" />-->
-<!--            <label for="nome">Nome:</label>-->
-<!--            <input type="text" id="nome" name="nome" th:value="${livro.nome}" /><br>-->
-<!--            <label for="autor">Autor:</label>-->
-<!--            <input type="text" id="autor" name="autor" th:value="${livro.autor}" /><br>-->
-<!--            <label for="editora">Editora:</label>-->
-<!--            <input type="text" id="editora" name="editora" th:value="${livro.editora}" /><br>-->
-<!--            <label for="isbn">ISBN:</label>-->
-<!--            <input type="text" id="isbn" name="isbn" th:value="${livro.isbn}" /><br>-->
-<!--            <button type="submit">Salvar</button>-->
-<!--            <button class="cancel-button" type="button">Cancelar</button>-->
-<!--        </form>-->
-<!--    </div>-->
-    
-    
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            var form = $('#edit-form');
-            var originalRowHtml; // To store the original row HTML when editing
-
-            // Click event listener for Edit buttons
-           $('.edit-button').click(function() {
-			   
-	            console.log('Edit button clicked'); // Add this line
-			   
-			    var livroId = $(this).data('id');
-			    
-	            console.log('livroId:', livroId); // Add this line
-			    
-			    var row = $(this).closest('tr');
-			    
-			    // Store the original row HTML
-			    originalRowHtml = row.html();
-			
-			    // Replace the row with the edit form
-			    row.html(form.html());
-			    form.show();
-			
-			    console.log('Searching for livro with id:', livroId); // Add this line
-
-			    // Find the livro object with the matching id
-			    var livro = $.grep(livros, function(e){ return e.id === livroId; })[0];
-			    
-		        console.log('Found livro:', livro); // Add this line
-
-			    
-			    // Populate the edit form with livro data
-			    form.find('[name="id"]').val(livro.id);
-			    form.find('[name="nome"]').val(livro.nome);
-			    form.find('[name="autor"]').val(livro.autor);
-			    form.find('[name="editora"]').val(livro.editora);
-			    form.find('[name="isbn"]').val(livro.isbn);
-			});
-
-            // Click event listener for cancel button
-            $('.cancel-button').click(function() {
-                // Restore the original row HTML
-                var row = $(this).closest('tr');
-                row.html(originalRowHtml);
-            });
-
-            // Click event listener for document
-            $(document).click(function(event) {
-                // Check if the click was outside the edit form
-                if (!form.is(event.target) && form.has(event.target).length === 0) {
-                    // Restore the original row HTML
-                    var row = form.closest('tr');
-                    row.html(originalRowHtml);
-                }
-            });
-        });
-    </script>
-    </div>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
