@@ -3,10 +3,29 @@
 
 <head>
     <title>Livros</title>
+    <meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" th:href="@{/css/styles.css}" />
+  	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <h1>Livros</h1>
-    
+	<div class="wrapper">
+    <h1 class="destaque">Livros 📚</h1>
+
+<div>
+    <h2>Adicionar Livro</h2>
+    <form th:action="@{/uc9sa4/livros/create}" method="post">
+        <input class="input-box" placeholder="nome" type="text" id="nome" name="nome"><br>
+        <input class="input-box" placeholder="autor" type="text" id="autor" name="autor"><br>
+        <input class="input-box" placeholder="editora" type="text" id="editora" name="editora"><br>
+        <input class="input-box" placeholder="isbn" type="text" id="isbn" name="isbn"><br>
+        <input class="btn" type="submit" value="Adicionar">
+    </form>
+    </div>
+    <br>
+    <div>
+		
+	
     <h2>Lista de Livros</h2>
     <table>
         <tr>
@@ -118,5 +137,7 @@
             });
         });
     </script>
+    </div>
+    </div>
 </body>
 </html>
