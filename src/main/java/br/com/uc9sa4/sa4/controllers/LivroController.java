@@ -60,11 +60,12 @@ public class LivroController {
         livroDTO.setEditora(livro.getEditora());
         livroDTO.setIsbn(livro.getIsbn());
 
-        ModelAndView modelAndView = new ModelAndView("edit-form-row");
+        ModelAndView modelAndView = new ModelAndView("edit-form");
         modelAndView.addObject("livroDTO", livroDTO);
         return modelAndView;
     }
-
+    
+   
     @PostMapping("/livros/edit/{id}")
     public String editLivro(@PathVariable Long id, @ModelAttribute LivroDTO livroDTO) {
         Livro livro = livroRepository.findById(id)

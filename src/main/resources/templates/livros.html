@@ -51,7 +51,7 @@
 			            <td data-label="editora" th:text="${livro.editora}"></td>
 			            <td data-label="isbn" th:text="${livro.isbn}"></td>
 			            <td>
-			                <button class="edit-button btnf" th:data-id="${livro.id}">Editar</button>
+							<button class="edit-button btnf" th:data-id="${livro.id}" th:href="@{/livros/edit/{id}(id=${livro.id})}">Editar</button>
 			            </td>
 			            <td>
 			                <button class="botãodedelete btnf" th:data-id="${livro.id}">Deletar</button>
@@ -61,7 +61,7 @@
                      <td colspan="7">
                          <div class="edit-form ">
                              Editar livro
-<!--						<form th:action="@{/livros/edit/{id}(id=*{id})}" th:object="${livroDTO}" method="post">-->
+						<form th:action="@{/livros/edit/{id}(id=*{id})}" th:object="${livroDTO}" method="post">
 							<form th:action="@{/livros/edit/{id}(id=${livroDTO.id})}" th:object="${livroDTO}" method="post">
 	               		        <input type="hidden" th:field="*{id}" />
 	                            <label for="nome">Nome:</label>
@@ -101,32 +101,12 @@
    	</script>
 	<script>
 	    $(document).ready(function () {
-	
-	        $('.edit-button').click(function () {
-				console.log("Button clicked")
-	            
-	            var row = $(this).find('livro-row');
-				var editForm = $('.edit-form-row');
-	
-	            row.hide();
-	            editForm.show();
-	
-	            var livroId = $(this).data('id');
-	            var livro = livros.find(function (l) { return l.id === livroId; });
-	            	            
-	            var form = editForm.find('form');
-	            form.find('[name="id"]').val(livro.id);
-	            form.find('[name="nome"]').val(livro.nome);
-	            form.find('[name="autor"]').val(livro.autor);
-	            form.find('[name="editora"]').val(livro.editora);
-	            form.find('[name="isbn"]').val(livro.isbn);
-	            console.log(livroId)
-	            console.log(livro)
-	            console.log(row)
-	            console.log(livro.id)
-	            console.log(livro.nome)
-	            
-	        });
+			$('.edit-button').click(function () {
+            var livroId = $(this).data('id');
+            window.location.href = '/livros/edit/' + livroId;
+        });
+			
+
 	
 	        $('.cancel-button').click(function () {
 	            var editForm = $(this).closest('.edit-form-row:visible');
