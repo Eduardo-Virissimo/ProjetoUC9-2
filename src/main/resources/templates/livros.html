@@ -54,7 +54,7 @@
 							<button class="edit-button btnf" th:data-id="${livro.id}" th:href="@{/livros/edit/{id}(id=${livro.id})}">Editar</button>
 			            </td>
 			            <td>
-			                <button class="botãodedelete btnf" th:data-id="${livro.id}">Deletar</button>
+    						<a class="btnf" th:href="@{/livros/delete/{id}(id=${livro.id})}">Deletar</a>
 			            </td>			            
 			        </tr>
 			     <tr class="edit-form-row" style="display: none;">
