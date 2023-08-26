@@ -2,14 +2,16 @@ package br.com.uc9sa4.sa4.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Livro")
+@Table(name="Livros")
 public class Livro {
 	@Id
-	@GeneratedValue
+//	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nome;
 	private String autor;
@@ -49,8 +51,8 @@ public class Livro {
 	public Long getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(Long isbn2) {
-		this.isbn = isbn2;
+	public void setIsbn(Long isbn) {
+		this.isbn = isbn;
 	}
 	public String getEditora() {
 		return editora;
