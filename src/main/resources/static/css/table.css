@@ -1,6 +1,11 @@
+.table-wrapper {
+	max-height: 450px;
+}
 .custom-table {
      width: 100%;
      border-collapse: collapse;
+     display: block;
+     overflow-y: auto;
 }
  .custom-tbody {
      background-color: rgba(0, 18, 25, 0.8);
@@ -22,17 +27,20 @@
      border: 1px solid rgba(0, 18, 25, 0.4);
      text-align: center;
      color: #f5f5f5;
-     font-weight: 600 
+     font-weight: 600;
+     max-width: 165px;
+     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
  .custom-table .custom-tbody tr:nth-child(even) {
      background-color: rgba(0, 18, 25, 0.4);
 }
 
 .btnf {
 	padding: 12px 12px;
-	/* Aumenta o tamanho dos botões */
 	font-size: 16px;
-	/* Aumenta o tamanho da fonte dos botões */
 	background-color: #6c63ff;
 	color: #fff;
 	border: none;
@@ -47,7 +55,33 @@
 	transform: scale(1.1);
 }
 
+
+
+
+/* Personalize a barra de rolagem vertical */
+.table-wrapper::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 18, 25, 0.4);; /* Cor do "ponteiro" da barra de rolagem */
+    border-radius: 5px; /* Arredondamento do "ponteiro" */
+}
+
+/* Estilo quando houver hover na barra de rolagem */
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: #574eb8; /* Cor alterada no hover */
+}
+
+/* Estilo para a trilha da barra de rolagem */
+.table-wrapper::-webkit-scrollbar-track {
+    background-color: rgba(0, 18, 25, 0.4);; /* Cor da trilha */
+}
+
  @media(max-width: 1600px){
+	 .custom-table td {
+		max-width: none;
+	}
      .custom-table .custom-thead {
          display: none;
     }
@@ -127,7 +161,6 @@
  @media (max-width: 400px) {
      span {
          display: inline-block;
-         
          overflow: hidden;
          white-space: nowrap;
          text-overflow: ellipsis;
