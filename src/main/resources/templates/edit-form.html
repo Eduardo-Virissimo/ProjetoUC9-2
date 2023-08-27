@@ -15,15 +15,11 @@
         <div>
             <form th:action="@{/livros/edit/{id}(id=${livroDTO.id})}" th:object="${livroDTO}" method="post">
                 <input type="hidden" th:field="*{id}" />
-                <label  for="nome">Nome:</label>
-                <input maxlength="45" type="text" th:field="*{nome}" /><br>
-                <label for="autor">Autor:</label>
-                <input maxlength="45" type="text" th:field="*{autor}" /><br>
-                <label for="editora">Editora:</label>
-                <input maxlength="45" type="text" th:field="*{editora}" /><br>
-                <label for="isbn">ISBN:</label>
-                <input maxlength="45" type="text" th:field="*{isbn}" /><br>
-                <button type="submit">Salvar</button>
+                <input required maxlength="45" class="input-box" placeholder="nome" type="text" th:field="*{nome}" /><br>              
+                <input required maxlength="45" class="input-box" placeholder="autor" type="text" th:field="*{autor}" /><br> 
+                <input required maxlength="45" class="input-box" placeholder="editora" type="text" th:field="*{editora}" /><br>
+                <input required maxlength="45" class="input-box" placeholder="isbn" type="text" th:field="*{isbn}" /><br>
+                <button class="btn" type="submit">Salvar</button>
                 <a class="cancel-button" href="/livros">Cancelar</a>
             </form>
         </div>

@@ -1,5 +1,5 @@
 .table-wrapper {
-	max-height: 450px;
+	max-height: 500px;
 }
 .custom-table {
      width: 100%;
@@ -28,10 +28,10 @@
      text-align: center;
      color: #f5f5f5;
      font-weight: 600;
-     max-width: 165px;
+     min-width: 125px;
      white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+     overflow: hidden;
+     text-overflow: ellipsis;
 }
 
  .custom-table .custom-tbody tr:nth-child(even) {
@@ -56,29 +56,32 @@
 }
 
 
-
-
-/* Personalize a barra de rolagem vertical */
 .table-wrapper::-webkit-scrollbar {
-    width: 10px; /* Largura da barra de rolagem */
+    width: 10px; 
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 18, 25, 0.4);; /* Cor do "ponteiro" da barra de rolagem */
-    border-radius: 5px; /* Arredondamento do "ponteiro" */
+    background-color: rgba(0, 18, 25, 0.4);; 
+    border-radius: 5px; 
 }
 
-/* Estilo quando houver hover na barra de rolagem */
 .table-wrapper::-webkit-scrollbar-thumb:hover {
-    background-color: #574eb8; /* Cor alterada no hover */
+    background-color: #574eb8; 
 }
 
-/* Estilo para a trilha da barra de rolagem */
 .table-wrapper::-webkit-scrollbar-track {
     background-color: rgba(0, 18, 25, 0.4);; /* Cor da trilha */
 }
 
- @media(max-width: 1600px){
+ @media(max-width: 1600px){ 
+	.carousel-control-prev {
+		transform: translateX(10%);
+		height: 20%;
+	}
+	.carousel-control-next {
+  		transform: translateX(-10%);
+		height: 20%;
+	}	
 	 .custom-table td {
 		max-width: none;
 	}
