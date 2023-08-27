@@ -28,7 +28,8 @@
      text-align: center;
      color: #f5f5f5;
      font-weight: 600;
-     min-width: 125px;
+     max-width: 127px;
+     min-width: 127px;
      white-space: nowrap;
      overflow: hidden;
      text-overflow: ellipsis;
